@@ -1,9 +1,10 @@
 import psycopg2
+import os
 from flask import Flask, request, jsonify
 
 app = Flask(__name__)
 
-NEON_CONN_STR = "postgresql://neondb_owner:npg_WkJnVjYF3H5I@ep-square-resonance-aejfh0jf-pooler.c-2.us-east-2.aws.neon.tech/customer_data?sslmode=require"
+NEON_CONN_STR = os.environ["NEON_CONN_STR"]
 
 def connect_to_neon():
     return psycopg2.connect(NEON_CONN_STR)
